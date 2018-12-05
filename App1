@@ -1,0 +1,120 @@
+/*
+Little random stuff
+import javax.swing.JOptionPane; for JOptionPane.showMessageDialog (null, "Hello Leslie Giron!");
+s = s.replaceFirst or All(word, str1);
+char answer = input.nextLine().charAt(0);
+
+
+
+/*
+import static java.lang.Math.pow;
+import java.util.Scanner;
+
+public class App1
+{
+    public static void main(String []args)
+        {
+            Scanner in=new Scanner(System.in);
+            
+            System.out.println("Choose a shape from the following options: Circle, Square, Rectangle or Exit");
+            System.out.print("Enter your choice: ");
+            
+            String choice=in.nextLine();
+  
+            if ("Circle".equals(choice))
+                {
+                    System.out.print("Enter the radius of the circle: ");
+                    
+                    double r =in.nextDouble();
+                    double circleArea=Math.PI *  Math.pow(r, 2);
+                    
+                    System.out.printf("The area of the circle is: %.2f", circleArea);
+                    System.out.println();
+                }
+
+            else if ("Square".equals(choice))
+                {
+                    System.out.print("Enter the length of one side of the square: ");
+
+                    double side = in.nextDouble();
+                    double squareArea = Math.pow(side,2);
+
+                    System.out.printf("The area of the square is: %.2f", squareArea);
+                    System.out.println();
+                }
+    
+            else if ("Rectangle".equals(choice))
+                {
+                    System.out.print("Enter the length and width of your rectangle: ");
+
+                    double length = in.nextDouble();
+                    double width = in.nextDouble();
+                    double rectangleArea = width*length;
+
+                    System.out.printf("The area of the rectangle is: %.2f", rectangleArea);
+                    System.out.println();
+                }  
+            else
+                {
+                    System.out.println("Exit");
+                }  
+        }
+}
+*/
+/*
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Lab03_04
+{
+  public static void main(String args[])
+  {
+    Scanner in = new Scanner(System.in);
+    
+    DecimalFormat df = new DecimalFormat("###.#");
+    
+    System.out.println("Enter length 1 of triangle: ");
+    double length1 = in.nextDouble();
+    
+    System.out.println("Enter length 2 of triangle: ");
+    double length2 = in.nextDouble();
+    
+    double hypotenuse = Math.sqrt(Math.pow(length1, 2) + Math.pow(length2, 2));
+    
+    System.out.println("The hypotenuse of the triangle is " + df.format(hypotenuse));
+  }
+}     
+ */       
+/*
+import static java.lang.Math.pow;
+public class Lab06_01
+{//computes powers of two to the the 20 power
+    public static void main (String args[])
+    {
+        int counter = 0;
+        
+        while (counter <= 20)
+        {
+            System.out.println(counter + ": " + pow(2,counter));
+            counter ++;
+        }
+    }
+}
+*/
+/*
+int sum = 0;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int a = in.nextInt();
+        System.out.print("Enter a number greater than the previous number: ");
+        int b = in.nextInt();
+        
+        {
+            for (int i = a; i <= b; i++)
+            {
+                if (i % 2!= 0) or (i %2 == 0)
+                    sum = sum + i;
+            }
+            System.out.println("The sum of all odd numbers is: " + sum);
+        }
+*/
