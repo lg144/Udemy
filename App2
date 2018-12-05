@@ -1,0 +1,199 @@
+
+/*import java.util.Random;
+
+public class App2 
+{
+    public static void main(String[] args) 
+    {
+        int[] inputarray;
+
+            //Scanner input = new Scanner(System.in);
+            inputarray = new int[10];
+            Random ran = new Random();
+            for (int i = 0; i < inputarray.length; i++)
+            {
+                //System.out.printf("%d element of array: ", i + 1);
+                //inputarray[i] = input.nextInt();
+                inputarray[i] = ran.nextInt(50);
+               // or inputarray[i] = (int)(Math.random()*20 + 1);
+                System.out.print(inputarray[i] + " ");
+            }
+
+        int sum = alternatingSum(inputarray);
+        System.out.println();
+        System.out.printf("Alternating sum is: %d\n", sum);
+    }
+
+    public static int alternatingSum(int[] array) 
+    {
+        int sum = 0;
+
+        for (int i = 0; i < array.length; i++) 
+        {
+            if (i % 2 == 0) 
+            {
+                sum += array[i];
+            } 
+            
+            else if (i % 2 != 0) 
+            {
+                sum += -array[i];
+            }
+        }
+        
+        return sum;
+    }
+}*/
+/*
+import java.util.Random;
+
+public class Lab09_01
+{
+    public static void main (String args[])
+    {
+        Random rand = new Random();
+        int [][] matrix = new int [3][4];
+        int i, j , row, colum = 0;
+        int randm;
+        for (i=0 ; i < 3 ; i++)
+        {
+            for (j=0 ; j<4 ; j++)
+            {
+                matrix [i][j]= randm = (int)Math.floor(Math.random()*(8-0+1)+1);
+            }
+        } 
+        for (i=0 ; i < 3 ; i++)
+        {
+            int sum = 0;
+            for (j=0 ; j<4 ; j++)
+            {
+                System.out.print ("["+matrix[i][j]+"]");
+
+                sum+= matrix[i][j];
+            }
+            System.out.println("Sum= " + sum);
+        }
+    }
+} 
+*/
+
+import java.util.*;
+public class Lab10_02
+{
+    public static void main (String args[])
+    {
+       new Lab10_02();
+    }
+    public Lab10_02()
+    {
+       char character= getChar();
+       displayChar(character);
+    }
+    
+    public char getChar()
+    {
+       System.out.print("Enter a character: ");
+       Scanner in = new Scanner (System.in);
+       char character = in.nextLine().charAt(0);
+       
+       return character;
+       
+    }
+    public void displayChar(char n)
+    {
+        System.out.println(n);
+    }
+}
+
+import java.util.Date;
+public class Lab10_01 
+{
+    public static void main(String args[])
+    {
+       Lab10_01 dateforlab= new Lab10_01();
+    }
+    
+    public Lab10_01()
+    {
+       Date current = new Date(); 
+       System.out.println(current.toString());
+    }
+}
+
+
+import java.util.Scanner;
+public class Lab10_03 
+{
+    public static void main(String[] args) 
+    {
+        System.out.println("(1) Rectangle ");
+        
+        System.out.println("(2) Square");
+        
+        System.out.println("(3) Circle");
+        
+        System.out.println("(4) Exit");
+        
+        GetArea variousArea = new GetArea();
+        Scanner in = new Scanner(System.in);
+        int userinput = in.nextInt();
+
+        if (userinput == 1) 
+        {
+            System.out.print("Enter the length and width of the rectangle: ");
+            double h = in.nextDouble();
+            double w = in.nextDouble();
+            variousArea.AreaOfRectangle(h, w);
+        } 
+        
+        else if (userinput == 2) 
+        {
+            System.out.println("Enter the dimension of the Square: ");
+            double s = in.nextDouble();
+            variousArea.AreaOfSquare(s);
+        } 
+        
+        else if (userinput == 3) 
+        {
+            System.out.println("Enter one dimension of the Circle: ");
+            double r = in.nextDouble();
+            variousArea.AreaOfCircle(r);
+        } 
+        
+        else if (userinput == 4) 
+        
+        {
+            System.out.print("Exiting...");
+        } 
+        
+        else 
+        {
+            System.out.print("Error");
+        }
+        System.out.println();
+    }
+}
+
+    class GetAreaOf
+    {
+    Scanner in = new Scanner(System.in);
+
+    public void AreaOfRectangle(double h, double w) 
+    {
+        double area = h*w;
+        System.out.println("The area of the rectangle is: " + area);
+    }
+
+    public void AreaOfSquare(double s) 
+    {
+        double square = Math.pow(s, 2);
+        System.out.println("The area of the square is: "+ square);
+    }
+    
+    public void AreaOfCircle(double r) 
+    {
+        double area = Math.PI * Math.pow(r, 2);
+        System.out.println("The area of the circle is: "+ area);
+    }
+}
+
