@@ -1,0 +1,156 @@
+public class Lab14_01
+{
+    public static void main (String [] args)
+    {
+        new Lab14_01();
+    }
+    public Lab14_01()
+    {
+        Square s1 = new Square(6);
+        
+        System.out.println(s1);
+    }
+}
+
+
+public class Square
+{
+    private double Side;
+    
+    public Square()
+    {
+        Side=1;
+    }
+    
+    public Square(double s1)
+    {
+        Side=s1;
+    }
+    
+    public double squareAreaMethod ()
+    {
+        return Math.pow(Side, 2);
+    }
+    public void setSide1(double r)
+    {
+        Side = r;
+    }
+    
+    public String toString()
+    {
+        return "Area = "+ squareAreaMethod();
+    }
+}
+
+
+import java.util.Scanner;
+public class Lab14_02 
+{
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        Employee employee = new Employee("Maggie", "Owens", 30000);
+
+        employee.raiseSalary(5000);
+        System.out.println(employee);
+    }
+}
+
+
+public class Employee
+{
+    private String firName;
+    private String lasName;
+    private double newsal;
+    
+    public Employee()
+    {
+        firName= "John";
+        lasName= "Doe";
+        newsal= 20000;
+    }
+    
+    public Employee(String firstName, String lastName, double salary) 
+    {
+        firName = firstName;
+        lasName = lastName;
+        newsal = salary;
+    }
+    
+    public void raiseSalary(double raiseSalary) 
+    {
+        newsal += raiseSalary;
+    }
+
+    public String toString() //shows values on screen
+    {
+        return ("First Name: " + firName + "\nLast Name: " + lasName + "\nSalary: " + newsal);
+    }
+}
+
+
+public class Lab14_03
+{
+    public static void main (String [] args)
+    {
+        new Lab14_03();
+    }
+    public Lab14_03()
+    {
+        Rectangle rectangle = new Rectangle(4,6);
+        System.out.println(rectangle);
+    }
+}
+
+
+public class Rectangle
+{
+    private double width;
+    private double length;
+    
+    public Rectangle()
+    {
+        width=1;
+        length=1;
+    }
+    
+    public Rectangle(double r1, double r2)
+    {
+        width = r1;
+        length = r2;
+    }
+    
+    public void setWidth(double r)
+    {
+        width = r;
+    }
+    public void setLength(double r)
+    {
+        length =r;
+    }
+    public double getWidth()
+    {
+        return width;
+    }
+    public double getLength()
+    {
+        return length;
+    }
+    public double rectangleAreaMethod()
+    {
+        return (width*length);
+    }
+    
+    public double rectanglePerimeterMethod()
+    {
+        return ((length + width)*2);
+    }
+
+    public String toString()
+    {
+        return ("Area of Rectangle: " + rectangleAreaMethod() + "\nPerimeter of Rectangle: " + rectanglePerimeterMethod());
+    }
+}
+
+
