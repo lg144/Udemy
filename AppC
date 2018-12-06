@@ -85,3 +85,69 @@ public class CourseTester
     }
     
 }
+
+
+
+
+public class Books
+{
+    private String title;
+    private String authors;
+    
+    public Books()
+    {
+        title = "Harry Potter";
+        authors = "J.K. Rowling";
+    }
+    public Books(String title, String authors)
+    {
+        this.title = title;
+        this.authors = authors;
+    }
+    public String getAuthors()
+    {
+        return authors;
+    }
+    public String getTitle()
+    {
+        return title;
+    }
+    public void setAuthors(String authors)
+    {
+        this.authors = authors;
+    }
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+   
+    public void addEdition(String edition)
+    {
+        title += " " + edition;
+    }
+    public void addAuthor(String name)
+    {
+        authors += ", " + name;
+    }
+     //@Override
+    public String toString()
+    {
+        return "Book Title: " + title + "\n Author's Name: " + authors;
+    }
+}
+
+
+public class Tester
+{
+    public static void main(String args[])
+    {
+        Books book1 = new Books();
+        Books book2 = new Books("Cat in the hat", "Dr Seuss");
+        
+        System.out.println(book1.toString());
+        
+        book2.addEdition("1st Edition");
+        book2.addAuthor("Joan Greene");
+        System.out.println(book2.toString());           
+    }
+}
