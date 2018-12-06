@@ -55,13 +55,13 @@ public class Course
 //Class with 2 instance variables// 
 //TESTER CLASS
 
-public class Prac//CourseTester
+public class CourseTester
 {
     public static void main(String args[])
     {
-        new Prac();//CourseTester();
+        CourseTester();
     }
-    public Prac()//CourseTester()
+    public CourseTester()
     {
         //INT Variables
         Course c1 = new Course();
