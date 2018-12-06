@@ -1,0 +1,87 @@
+public class Course
+{
+    private String courseName;
+    private int contactHours;
+    
+    //Default Constructor
+    public Course()
+    {
+        courseName = " ";
+        contactHours = 0;
+    }
+    //Paramaterized Constructor
+    public Course(String courseName, int contactHours)
+    {
+        this.courseName = courseName;
+        this.contactHours = contactHours;
+    }
+    //Accessors
+    public String getCourseName()
+    {
+        return courseName;
+    }
+    public int getContactHours()
+    {
+        return contactHours;
+    }
+    //Setters
+    public void setCourseName(String courseName)
+    {
+        this.courseName = courseName;
+    }
+    public void setContactHours(int contactHours)
+    {
+        this.contactHours = contactHours;
+    }
+    //toString
+    @Override
+    public String toString()
+    {
+        return "Course Name: " + courseName + "\nContact Hours: " + contactHours;
+    }
+    //INIT
+    public void init()
+    {
+        contactHours = 45;
+    }
+    //Calculations
+    public void contactHoursIncrease(int amount)
+    {
+        contactHours += amount;
+    }
+}
+
+
+//Class with 2 instance variables// 
+//TESTER CLASS
+
+public class Prac//CourseTester
+{
+    public static void main(String args[])
+    {
+        new Prac();//CourseTester();
+    }
+    public Prac()//CourseTester()
+    {
+        //INT Variables
+        Course c1 = new Course();
+        Course c2 = new Course();
+        c1.contactHoursIncrease(35);
+        c2.init();
+        
+        //Setter
+        c1.setCourseName("Intro to Anthropology");
+        System.out.println(c1);
+        
+        c2.setCourseName("Programming I ");
+        System.out.println(c2);
+        
+        /*Calculations
+        c1.addCourse(7);
+        System.out.println(c1.toString());
+        //Getters
+        System.out.println(c1.getCourse());
+        System.out.println(c2.getCourse());*/
+    }
+    
+}
