@@ -1,0 +1,62 @@
+public class CashRegister
+{
+    private double minimumCash;
+    private double cashOnHand;
+
+public CashRegister()
+{
+minimumCash = 1;
+cashOnHand = 0;
+}
+public CashRegister(double minimumCash, double cashOnHand)
+{
+this.minimumCash = minimumCash;
+this.cashOnHand = cashOnHand;
+
+}
+public double getMinimumCash()
+{
+return minimumCash;
+}
+public double getCashOnHand()
+{
+return cashOnHand;
+}
+public void setToMinimum()
+{
+this.minimumCash = minimumCash;
+}
+public void addCash(double value)
+{
+cashOnHand += value;
+}
+public String toString()
+{
+return "Total cash on hand: " + cashOnHand +
+        "\nMinimum Cash amount: " + minimumCash;
+}
+}
+  
+  
+  
+  //Tester Class
+  
+  public class Tester
+{
+    public static void main(String[] args)
+    {
+        CashRegister cashreg1 = new CashRegister();
+        CashRegister cashreg2 = new CashRegister();
+        
+        System.out.println(cashreg1.toString());
+        System.out.println();
+       
+        cashreg2.addCash(100);
+        System.out.println(cashreg2.toString());
+
+    }
+}
+        
+
+
+ 
