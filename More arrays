@@ -1,0 +1,153 @@
+//puts number in descending order
+public class ArrayChallenge {
+
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int[] myIntegers = getIntegers(5);
+
+        int[] sorted = sortIntegers(myIntegers);
+        printArray(sorted);
+    }
+
+    public static int[] getIntegers(int number) {
+        
+        int[] array = new int[number];
+        System.out.println("Enter " + number + " numbers");
+        for (int i = 0; i < array.length; i++) {
+            array[i] = scanner.nextInt();
+        }
+        return array;
+    }
+
+    public static void printArray(int[] array) { //array printing method
+        for (int i = 0; i < array.length; i++) {
+            System.out.println("Element " + i + " contents " + array[i]);
+        }
+    }
+    
+    public static int[] sortIntegers(int[] array) {
+       
+        int[] sortedArray = new int[array.length];
+        for(int i = 0; i < array.length; i++) {
+            sortedArray[i] = array[i];//copies elements of array to new array
+        }
+             
+        boolean flag = true;
+        int temp;
+        
+        while(flag) {
+            flag = false;
+            for(int i = 0; i < sortedArray.length - 1; i++) {
+                if (sortedArray[i] < sortedArray[i + 1]) {
+                    temp = sortedArray[i];
+                    sortedArray[i] = sortedArray[i + 1];
+                    sortedArray[i + 1] = temp;
+                    flag = true;
+                }
+            }
+        }
+        
+        return sortedArray;
+    }
+}
+
+
+
+/*
+ * program ask user to input 5 numbers and puts the numbers in a array
+and then gives the average of the numbers
+ */
+
+/**
+ *
+ * @author lfg524
+ */
+public class MoreArrays {
+    
+    private static Scanner scanner = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        int[] myIntegers = getIntegers(5);
+        for (int i = 0; i < myIntegers.length; i++) {
+            System.out.println("Element " + i + ", typed value was " + myIntegers[i]);
+        }
+        System.out.println("The average of numbers inputed is " 
+                + getAverage(myIntegers));
+    }
+    
+    
+    public static int[] getIntegers(int number) {
+        System.out.println("Enter " + number + " integer values.\r");// \r is a line
+        int[] values = new int[number];
+        
+        for (int i = 0; i < values.length; i++) {
+            values[i] = scanner.nextInt();
+        }
+        return values;
+    }
+    
+    public static double getAverage(int[] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+            
+        }
+        return (double) sum / (double)array.length;
+    }
+     
+}
+
+
+
+
+//Finds minimum element
+
+public class MinElement {
+    
+    private static Scanner scanner = new Scanner(System.in);
+    
+    
+    private static int[] readIntegers(int count)
+    {
+        //System.out.println("Enter " + count + " integer values.\r");
+        
+        int[] array = new int[count];
+        for(int i = 0; i < array.length; i++)
+        {
+            System.out.println("Enter a number: ");
+            int number = scanner.nextInt();   
+            scanner.nextLine();
+            array[i] = number;
+        }
+        return array;
+    }
+    
+    private static int findMin(int[] array)
+    {
+        int min = Integer.MAX_VALUE;
+        
+        for(int i = 0; i< array.length; i++)
+        {
+            int value = array[i];
+            if (value < min)
+            {
+                min = value;
+            }
+        }
+        return min;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Enter a count: ");
+        int count = scanner.nextInt();
+        scanner.nextLine();
+        
+        int[] returnArray = readIntegers(count);
+        
+        int returnedMin = findMin(returnArray);
+        
+        System.out.println("The minimum value is: " + returnedMin);
+    }
+}
