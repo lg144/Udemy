@@ -1,0 +1,234 @@
+/*
+ * Leslie Giron
+ * COP3337 Section U10 1191
+ * I affirm that this program is entirely my own work and none of it is the 
+ * work of any other person. Leslie F. Giron
+ * 
+ * The MagicSquare class uses a 2D array to model a magic square.  
+ * A magic square is a square matrix (N rows by N columns) with the following 
+ * properties: 1. It contains the numbers 1 through N2, with each number appearing 
+ * exactly once. 2. The sums of each row, each column, and both main diagonals 
+ * are equal. 
+ * Contains a private "utility" method to fill the array and a toString that 
+ * returns the square in table form.
+ */
+
+class MagicSquare
+{
+    int size;
+    // instance variable - an 2D int array object variable
+    private int[][] square;
+    
+    public MagicSquare(int size)   // constructor
+    {
+       this.size= size;
+       square = new int[size][size];
+       initSquare();
+       fillUtility();
+    }
+    
+    /**
+    * 
+    * 
+    */
+    private void initSquare()
+    {
+       for(int i = 0; i < size; i++)
+           for(int j = 0; j < size; j++)
+               square[i][j] = 0;
+       square[size-1][size/2] = 1;      
+    }
+    
+    /**
+    * Returns true or false whether the 2D array is full or not
+    * @return true if square is not full; else false
+    */
+    private boolean isSquareFull()
+    {
+       for(int i = 0; i < size; i++)
+           for(int j = 0; j < size; j++)
+               if(square[i][j] == 0)
+                   return true;
+       return false;          
+    }
+    
+    /**
+    * Returns the square in table form
+    * @param the int pos in the array
+    * @return the ints in the square as a table
+    */
+    private boolean nonExistentPos(int pos)
+    {
+       return pos < 0 || pos >= size;
+    }
+    
+    /**
+    * Returns the square in table form
+    * @param arg the int row be inserted
+    * @param arg the int col be inserted
+    * @return the 
+    */
+    private boolean isEmpty(int row, int col)
+    {
+       return square[row][col] == 0;
+    }
+    
+    private void fillUtility()   // fill array
+    {
+       initSquare();
+       int currentRowPos = size-1;
+       int currentColPos = size/2;
+       int currentValue = 1;
+       while(isSquareFull())
+       {
+          int nextRowPos = currentRowPos+1;
+          int nextColPos = currentColPos+1;
+          System.out.println(this.toString() + currentRowPos + ", " + currentColPos);
+          if(nonExistentPos(nextRowPos) && nonExistentPos(nextColPos))
+          {
+             nextRowPos = currentRowPos-1;
+             nextColPos = currentColPos;
+             System.out.println("One");
+          }  
+          else if(nonExistentPos(nextRowPos))
+          {
+             nextRowPos = 0;
+             System.out.println("Two");
+          }
+          else if(nonExistentPos(nextColPos))
+          {
+             nextColPos = 0;
+             System.out.println("Three");
+          }
+          else if(!isEmpty(nextRowPos, nextColPos))
+          {
+             nextRowPos = currentRowPos-1;
+             nextColPos = currentColPos;
+             System.out.println("Four");
+          }
+          if(isEmpty(nextRowPos, nextColPos))
+          {
+             currentValue++;
+             square[nextRowPos][nextColPos] = currentValue;
+             currentRowPos = nextRowPos;
+             currentColPos = nextColPos;
+             System.out.println("Five");
+          }
+            
+          if(currentRowPos > size+1 || currentColPos > size+1)
+              break;
+       }
+    }
+    
+    /**
+    * Determines if square is truly magical 
+    * Square is magical if  all the sums of every row 
+    * and of every column and of both diagonals are equal.   
+    * Returns if square is magical
+    * @return true if square is magical; else false
+    */
+    public boolean isMagicSquare()
+    {
+       int sum = 0;
+       for(int i = 0; i < size; i++)   //First column sum.
+           sum += square[i][0];
+       for(int i = 1; i < size; i++)   //For rest of columns.
+       {
+          int newSum = 0;
+          for(int j = 0; j < size; j++)   //Sum of column i.
+              newSum += square[j][i];
+          if(sum != newSum)   //If the column sum is not equal to should be sum.
+              return false;   //Square is not magical
+       }  
+       for(int i = 0; i < size; i++)   //For each row.
+       {
+          int newSum = 0;
+          for(int j = 0; j < size; j++)   //Sum of row i.
+              newSum += square[i][j];
+          if(sum != newSum)   //If the row sum is not equal to should be sum.
+              return false;   //Square is not magical      
+       }
+       int newSum = 0;
+       for(int i = 0; i < size; i++)   //Leading diagonal sum.
+           newSum += square[i][i];
+       if(sum != newSum)   //If leading diagonal sum is not equal to should be sum.
+           return false;   //Square is not magical
+       newSum = 0;  
+       for(int i = size-1; i >= 0; i--)   //Trialing diagonal sum.
+           newSum += square[i][size-i-1];
+       if(sum != newSum)   //If trialing diagonal sum is not equal to should be sum.
+           return false;   //Square is not magical
+       return true;       //Square is truly magical  
+    }
+    
+    /**
+    * Returns the square in table form
+    * @return the ints in the square as a table
+    */
+    public String toString()
+    {
+       String temp = "";
+       for(int i = 0; i < size; i++)  
+       {
+          for(int j = 0; j < size; j++)
+              temp += "\t" + square[i][j];
+          temp += "\n";  
+       }
+       temp += "\n";
+       return temp;
+    }
+}
+
+
+
+
+/*
+ * Leslie Giron
+ * COP3337 Section U10 1191
+ * I affirm that this program is entirely my own work and none of it is the 
+ * work of any other person. Leslie F. Giron
+ * 
+ * A test class for the MagicSquare class.  Get the size of the square, N, from
+ * the user.  Calls the method that tests whether the square is truly magic.  
+ * If so, calls toString and prints the square returned; else prints an error
+ * message.  After each square (or error message) is printed, the user will
+ * be asked whether they want to create another
+ */
+
+import java.util.Scanner;
+
+class Test 
+{
+    public static void main(String[] args) 
+    {
+        for (int i = 0; i < 5; i++) 
+        {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter size:");
+            int squareSize = scanner.nextInt();
+
+            if (squareSize > 0 && squareSize % 2 != 0) 
+            {
+                //Creates a MagicSquare object
+                MagicSquare mySquare = new MagicSquare(squareSize);
+                System.out.println(mySquare);
+                System.out.println("Would you like to create another magic square?"
+                        + "(Press 1 for yes or 2 for no)");
+                int answer = scanner.nextInt();
+                if (answer == 1) 
+                {
+                    continue;
+                }
+                if (answer != 1) 
+                {
+                    break;
+                }
+            } 
+            else 
+            {
+                System.out.println("Error!  Please enter an odd positive integer.");
+            }
+
+        }
+    }
+}
