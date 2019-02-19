@@ -1,0 +1,280 @@
+public class LargestInArray {
+
+    public static void main(String[] args) {
+
+        final int LENGTH = 100;
+        double[] values = new double[LENGTH];
+
+        int currentSize = 0;
+
+        //READ INPUTS
+        System.out.println("Please enter a number or Q to quit");
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNextDouble() && currentSize < values.length) {
+            values[currentSize] = scanner.nextDouble();
+            currentSize++;
+        }
+
+        //FIND LARGEST VALUE
+        double largest = values[0];
+        for (int i = 1; i < currentSize; i++) {
+            if (values[i] > largest) {
+                largest = values[i];
+            }
+        }
+
+        int counter = 0;                //counter count
+        for (double element : values) {
+            if (element == 4) {
+                counter++;
+            }
+        }
+
+        //PRINT ALL VALUES AND MARK THE LARGEST
+        for (int i = 0; i < currentSize; i++) {
+            System.out.print(values[i]);
+            if (values[i] == largest) {
+                System.out.print(" <--- largest value");
+            }
+
+            System.out.println();
+            
+        }
+        System.out.println("Four came out " + counter + " times");
+    }
+}
+
+
+
+public class Prac {
+
+    public static void main(String[] args) {
+
+        
+        int[] scores = {10, 9, 7, 10};
+        System.out.println("Total score: " + fred.addScores(scores));
+    }
+
+      private static class fred {
+
+        private static int addScores(int[] values) {
+            int totalScore = 0;
+
+            for (int i = 0; i < values.length; i++) 
+            {
+                totalScore = totalScore + values[i];
+                System.out.println("Test "+ i + ": " + values[i]);
+            }
+
+            return totalScore;
+        }
+        
+        
+         /*
+        final int LENGTH = 5;
+        double[] values = new double[LENGTH];
+
+        int currentSize = 0;
+        double total = 0;
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Enter a number: ");
+
+        while (currentSize < values.length)
+        {
+            if (in.hasNextDouble()) 
+            {
+                values[currentSize] = in.nextDouble();
+                currentSize++;
+                System.out.println(currentSize);
+            }
+            if (currentSize == values.length) 
+            {
+                System.out.println("Array full");
+                for (int i = 0; i < currentSize; i++) 
+                {
+                    total = total + values[i];
+                    System.out.println(values[i]);
+
+                }
+            }
+        }
+        System.out.println("Total: " + total);
+*/
+    }
+}
+
+
+
+
+
+public class QuizScores {
+
+    public static void main(String[] args) {
+        double[] scores = {8, 7, 8.5, 9.5, 7, 4, 10};
+        
+        double smallest = scores[0];
+        for (int i = 0; i < scores.length; i++)
+        {
+            if(scores[i] < smallest )
+            {
+                smallest = scores[i];
+            }
+        }
+        
+        double sum = 0;
+        
+        for (int i = 0; i < scores.length; i++)
+        {
+            double element = scores[i];
+            sum = sum + element;
+        }
+        sum = sum - smallest;
+        System.out.println("Sum of quizes: " + sum);
+        
+    }
+}
+
+
+
+public class Prime {
+
+    public static void main(String[] args) {
+        /*
+        int[] prime = new int[] {2, 3, 5, 7, 11, 13, 17, 19};
+        
+        for ( int i = 0; i < prime.length; i++)
+        {
+            prime[7 - i] = prime[i];
+            //prime[i]++;
+            System.out.println(prime[i]);
+        }
+         */
+
+        double[] values = new double[]{1, 2, 3, 4, 5};
+
+        double total = 0;
+
+        for (double element : values) //sums up elements in array
+        {
+            total = total + element;
+        }
+        System.out.println("First total: " + total);
+
+        total = 0;
+        for (int i = 0; i < values.length; i++) //another way to sum up elements in array
+        {
+
+            double element = values[i];
+            total = total + element;
+
+        }
+        System.out.println("Second total: " + total);
+
+        double average = 0;             //Calculates average
+        if (values.length > 0) {
+            average = total / values.length;
+        }
+        System.out.println("Average: " + average);
+
+        //values[i] = 0;
+        int counter = 0;                //counter count
+        for (double element : values) {
+            if (element == 4) {
+                counter++;
+            }
+        }
+        System.out.println("Counter count: " + counter);
+
+        double quot = 1;
+        for (double element : values) //multiplys all elements in array
+        {
+            quot = quot * element;
+        }
+        System.out.println("Quotient: " + quot);
+
+        /*
+        for (int i = 0; i < values.length; i++) //just squares index
+        {
+            values[i] = i * i;
+            System.out.println(values[i]);
+        }
+
+         */
+        double largest = values[0];         //Finding the max in an array
+        for (int i = 1; i < values.length; i++) {
+            if (values[i] > largest) {
+                largest = values[i];
+
+            }
+        }
+        System.out.println("Largest: " + largest);
+
+        double smallest = values[0];            //Finding the min in an array
+        for (int i = 1; i < values.length; i++) {
+            if (values[i] < smallest) {
+                smallest = values[i];
+            }
+        }
+        System.out.println("Smallest: " + smallest);
+
+        for (int i = 0; i < values.length; i++) {   //Seperates elements
+            if (i > 0) {
+                System.out.print(" | ");
+            }
+            System.out.print(values[i]);
+
+        }
+        System.out.println();
+
+        for (int i = 0; i < values.length; i++) {   //Seperates elements
+            if (i > 0 && i < values.length) {
+
+                System.out.print(" | ");
+            }
+            System.out.print(values[i]);
+
+        }
+        System.out.println();
+
+        Arrays.toString(values);    //Seperates elements into a string
+
+        System.out.println("To String method: " + Arrays.toString(values));
+
+        //Linear Search of an array, used to find the position of a specific
+        //element in an array to replace or remove it
+        int searchedValue = 3;
+        int pos = 0;
+        boolean found = false;
+        while (pos < values.length && !found) {
+            if (values[pos] == searchedValue) {
+                found = true;
+            } else {
+                pos++;
+            }
+        }
+        if (found) {
+            System.out.println("Found at position: " + pos);
+        } else {
+            System.out.println("Not found");
+        }
+
+        int currentSize = 0;        //Removes an element in an ordered array
+        for (int i = pos + 1; i < currentSize; i++) {
+            values[i - 1] = values[i];
+        }
+        currentSize--;
+        //System.out.println(Arrays.toString(values));
+
+        //scores[smallestPosition] = scores[currentSize - 1];
+        //currentSize--;
+        
+        
+        System.out.print(values[0]);
+        for (int i = 1; i < values.length; i++) {
+            System.out.print(", " + values[i]);
+        }
+
+    }
+}
