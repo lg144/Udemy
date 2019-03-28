@@ -1,0 +1,297 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author lfg524
+ */
+public class Sphere extends Shape3D {
+
+    int x, y, z;
+    double radius;
+
+    public Sphere(int x, int y, int z, double radius) {
+        
+        super(x, y, z);
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.radius = radius;
+        
+    }
+
+    public String getShapeName() {
+        return "Sphere";
+    }
+
+    
+    
+    @Override
+    public void getSurfaceArea() {
+        double surfaceArea = 4 * Math.PI * Math.pow(radius, 2);
+    }
+
+    
+    @Override
+    public void getVolume() {
+        
+        double volume = 4/3 * Math.PI * Math.pow(radius, 3);
+                
+    }
+
+    @Override
+    public String toString() {
+        return "Sphere{" + "x=" + x + ", y=" + y + ", z=" + z + 
+                ", radius=" + radius + '}';
+    }
+    
+    
+    
+}
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author lfg524
+ */
+public class Cone extends Shape3D {
+
+    int x, y, z;
+    double height, radius;
+
+    public Cone(int x, int y, int z, double radius, double height) {
+        super(x, y, z);
+        this.height = height;
+        this.radius = radius;
+    }
+
+    @Override
+    public void getSurfaceArea() {
+        double s = Math.sqrt(Math.pow(radius, 2) + Math.pow(height, 2));
+        double surfaceArea =  Math.PI * radius * (radius + s);  
+    }
+
+    @Override
+    public void getVolume() {
+        double volume = (Math.PI * height * Math.pow(radius, 2) / 3);
+    }
+
+    @Override
+    public String toString() {
+        return "Cone{" + "x=" + x + ", y=" + y + ", z=" + z + ", height=" 
+                + height + ", radius=" + radius + '}';
+    }
+
+    
+}
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author lfg524
+ */
+public class ParallelPiped extends Shape3D {
+
+    int x, y, z;
+    double length, width, height;
+
+    public ParallelPiped(int x, int y, int z, double length, double width,
+            double height) {
+
+        super(x, y, z);
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    public void getSurfaceArea() {
+        double surfaceArea = 2 * length * width + 2 * width * height + 2
+                * length * height;
+    }
+
+    @Override
+    public void getVolume() {
+        double volume = length * width * height;
+    }
+
+    @Override
+    public String toString() {
+        return "ParallelPiped{" + "x=" + x + ", y=" + y + ", z=" + z 
+                + ", length=" + length + ", width=" + width + ", height=" 
+                + height + '}';
+    }
+
+    
+}
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author lfg524
+ */
+public class Cylinder extends Shape3D {
+
+    int x, y, z;
+    double radius, height;
+
+    public Cylinder(int x, int y, int z, double radius, double height) {
+        super(x, y, z);
+        this.radius = radius;
+        this.height = height;
+    }
+
+    @Override
+    public void getSurfaceArea() {
+        double surfaceArea = 2 * Math.PI * Math.pow(radius, 2) + 2 * Math.PI 
+                * radius * height;
+    }
+
+    @Override
+    public void getVolume() {
+        double volume = Math.PI * height * Math.pow(radius, 2);
+    }
+
+    @Override
+    public String toString() {
+        return "Cylinder{" + "x=" + x + ", y=" + y + ", z=" + z + ", radius=" 
+                + radius + ", height=" + height + '}';
+    }
+
+    
+}
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author lfg524
+ */
+public abstract class Shape3D {
+
+    private Point3D point;
+    
+    public Shape3D(int x, int y, int z) {
+        
+        point = new Point3D(x, y, z);
+    }
+    
+
+    @Override
+    public String toString() {
+        
+        return point.toString();
+    }
+    
+    
+    public int distanceFromCenter(int x, int y, int z) {
+        int xO, yO, zO = 0;
+        int distance = 0;
+        return distance;
+    }
+    
+    public abstract void getSurfaceArea();
+        
+    public abstract void getVolume();
+    
+}
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author lfg524
+ */
+public class Point3D {
+    
+    private int x, y, z;
+
+    public Point3D(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinates: " + "x=" + x + ", y=" + y + ", z=" + z ;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getZ() {
+        return z;
+    }
+    
+    
+}
+
+
+
+
+
+public class Driver {
+    
+    public static void main(String[] args) {
+        
+        Sphere sphere = new Sphere(2, 5, 8, 14);
+        Cone cone = new Cone(-5, 4, -1, 11, 15);
+        Cylinder cylinder = new Cylinder(3, -6, 6, 10, 13);
+        ParallelPiped parallelPiped = new ParallelPiped(7, 6, 9, 17, 12, 13);
+        
+        Object[] shapes = new Object[sphere, cone, cylinder, parallelPiped];
+    }
+}
