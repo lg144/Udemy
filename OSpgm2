@@ -1,0 +1,126 @@
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author lfg524
+ */
+public class OSpgm2 {
+
+    public static String hexToBin(String hex) throws IOException {
+        String bin = "";
+        String nib = "";
+
+        for (int i = 0; i < hex.length(); i++) {
+            char c = hex.charAt(i);
+            switch (c) {
+                case '0':
+                    nib = "0000";
+                    break;
+                case '1':
+                    nib = "0001";
+                    break;
+                case '2':
+                    nib = "0010";
+                    break;
+                case '3':
+                    nib = "0011";
+                    break;
+                case '4':
+                    nib = "0100";
+                    break;
+                case '5':
+                    nib = "0101";
+                    break;
+                case '6':
+                    nib = "0110";
+                    break;
+                case '7':
+                    nib = "0111";
+                    break;
+                case '8':
+                    nib = "1000";
+                    break;
+                case '9':
+                    nib = "1001";
+                    break;
+                case 'A':
+                case 'a':
+                    nib = "1010";
+                    break;
+                case 'B':
+                case 'b':
+                    nib = "1011";
+                    break;
+                case 'C':
+                case 'c':
+                    nib = "1100";
+                    break;
+                case 'D':
+                case 'd':
+                    nib = "1101";
+                    break;
+                case 'E':
+                case 'e':
+                    nib = "1110";
+                    break;
+                case 'F':
+                case 'f':
+                    nib = "1111";
+                    break;
+                default:
+                    System.out.println("N/A");
+                    System.exit(i);
+            }
+            bin += nib;
+        }
+        return bin;
+    }
+
+    public static double binToDec(String bin) {
+
+        double dec = 0;
+        for (int i = 0; i < bin.length(); i++) {
+            if (bin.charAt(i) == '1') {
+                dec = dec + Math.pow(2, bin.length() - 1 - i);
+            }
+        }
+        return dec;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        String binary;
+        double decimal;
+        try {
+            
+        BufferedReader inFile = new BufferedReader(new FileReader("RAMerrors"));
+        String record = inFile.readLine();
+        while (record != null) {
+            System.out.printf(record);
+            binary = hexToBin(record);
+            decimal = binToDec(binary);
+        
+            /*try {
+            System.out.println(hexToBin(s));
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.print("");
+        }*/
+        }
+        inFile.close();
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.print("");
+        }
+        
+        System.out.printf("Hex Error      Binary             Decimal            Found at   \n");
+        //System.out.printf("%12s= %15s=  %14.f  =  chip number", record, binary, decimal );
+    }
+}
