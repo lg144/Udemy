@@ -1,0 +1,178 @@
+/**************************************************
+Author   : Leslie Giron
+Course   : CGS3767 Mo,Wed 6:25-7:40pm
+Professor: Michael Robinson
+Program  : pgm2_5fcOS, Locates the error for each 
+RAM chip
+           This program opens and reads a file with
+hexadecimal value, then converts the value to binary
+and then converting that to a decimal value.
+Due Date : 09/30/2019
+
+I certify that this work is my own alone.
+
+
+    ..........{ Leslie Giron  }..........
+**************************************************/
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class gironL_OSpgm2
+{
+
+    public static String hexToBin( String hex ) throws IOException
+    {
+        String bin = "";
+        String nib = "";
+
+        for (int i = 0; i < hex.length(); i++) {
+            char c = hex.charAt(i);
+            switch (c) {
+                case '0':
+                    nib = "0000";
+                    break;
+                case '1':
+                    nib = "0001";
+                    break;
+                case '2':
+                    nib = "0010";
+                    break;
+                case '3':
+                    nib = "0011";
+                    break;
+                case '4':
+                    nib = "0100";
+                    break;
+                case '5':
+                    nib = "0101";
+                    break;
+                case '6':
+                    nib = "0110";
+                    break;
+                case '7':
+                    nib = "0111";
+                    break;
+                case '8':
+                    nib = "1000";
+                    break;
+                case '9':
+                    nib = "1001";
+                    break;
+                case 'A':
+                case 'a':
+                    nib = "1010";
+                    break;
+                case 'B':
+                case 'b':
+                    nib = "1011";
+                    break;
+                case 'C':
+                case 'c':
+                    nib = "1100";
+                    break;
+                case 'D':
+                case 'd':
+                    nib = "1101";
+                    break;
+                case 'E':
+                case 'e':
+                    nib = "1110";
+                    break;
+                case 'F':
+                case 'f':
+                    nib = "1111";
+                    break;
+                default:
+                    System.out.println("N/A");
+                    System.exit(i);
+            }
+            bin += nib;
+        }
+        return bin;
+    }
+
+    public static long binToDec( String bin )
+    {
+        long dec = 0;
+        for (int i = 0; i < bin.length(); i++) {
+            if (bin.charAt(i) == '1') {
+                dec = dec + (long)Math.pow(2, bin.length() - 1 - i);
+            }
+        }
+        return dec;
+    }
+
+
+    public static String ramChip( long decimal )
+    {
+        String chip = "";
+        if(decimal >= 0 && decimal <= 34359738368L)
+        {
+        chip = "0";
+        }
+        else if(decimal >= 34359738369L && decimal <= 68719476738L)
+        {
+        chip = "1";
+        }
+        else if(decimal >= 68719476739L && decimal <= 103079215108L)
+        {
+        chip = "2";
+        }
+        else if(decimal >= 103079215109L && decimal <= 137438953478L)
+        {
+        chip = "3";
+        }
+        else if(decimal >= 137438953478L && decimal <= 171798691848L)
+        {
+        chip = "4";
+        }
+        else if(decimal >= 171798691849L && decimal <= 206158430218L)
+        {
+        chip = "5";
+        }
+        else if(decimal >= 206158430219L && decimal <= 240518168588L)
+        {
+        chip = "6";
+        }
+        else if(decimal >= 240518168589L && decimal <= 274877906958L)
+        {
+        chip = "7";
+        }
+        else 
+        {
+        chip = "N/A";
+        }
+        return chip;
+    }
+
+    public static void main ( String args[] )  throws IOException
+    {
+        String binary;
+        long decimal;
+        String chip;
+        System.out.printf("Hex Error      Binary                         "
+                + "              Decimal           Found at   \n");
+        BufferedReader inFile = new BufferedReader( new FileReader  ("RAMerrors8x4d"));
+        String record = inFile.readLine();
+        try
+        {
+        while (record != null)
+            {
+            binary = hexToBin(record);
+            decimal = binToDec(binary);
+            chip = ramChip(decimal);
+            System.out.printf("%s  =  %s  =  %-13d  =  %s\n", record, binary, decimal, chip );
+            record = inFile.readLine();
+            }
+        }
+
+        catch (ArrayIndexOutOfBoundsException e) 
+        {
+            System.out.print("");
+        }
+        inFile.close();
+    }
+
+}
