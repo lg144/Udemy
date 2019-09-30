@@ -99,6 +99,8 @@ public class OSpgm2 {
 
         String binary;
         double decimal;
+        System.out.printf("Hex Error      Binary                         "
+                + "              Decimal            Found at   \n");
         try {
             
         BufferedReader inFile = new BufferedReader(new FileReader("RAMerrors"));
@@ -107,7 +109,8 @@ public class OSpgm2 {
             System.out.printf(record);
             binary = hexToBin(record);
             decimal = binToDec(binary);
-        
+            System.out.printf("%s  =  %s  =  %d%n  =  chip number", record, binary, decimal );
+
             /*try {
             System.out.println(hexToBin(s));
         } catch (ArrayIndexOutOfBoundsException e) {
